@@ -6,7 +6,7 @@ import { Sidebar } from "../components/Sidebar";
 
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
-})
+});
 
 const options: ApexOptions = {
   chart: {
@@ -54,12 +54,13 @@ const options: ApexOptions = {
       opacityTo: 0.3, 
     }
   }
-}
+};
+
 const series = [
   {
     name: 'series1', data: [31, 120, 10, 28, 51, 18, 109]
   }
-]
+];
 
 export default function Dashboard() {
   return (
@@ -81,5 +82,5 @@ export default function Dashboard() {
       </Flex>
 
     </Flex>
-  )
-}
+  );
+};
