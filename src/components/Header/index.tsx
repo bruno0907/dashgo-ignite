@@ -33,7 +33,7 @@ function Header () {
           aria-label="Open Navigation"
           onClick={onOpen}
           mr="2"
-          mb="1"
+          pb="1"
         />)}
       <Logo />
       
