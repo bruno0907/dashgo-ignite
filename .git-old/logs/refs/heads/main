@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 8b2a0e8078e92677e7b61cf0a38d780a1b45f700 bruno0907 <bruno0907@gmail.com> 1622555130 -0300	commit (initial): Initial commit from Create Next App
+8b2a0e8078e92677e7b61cf0a38d780a1b45f700 c6dad10c4cc398fda60cc41e6451452752ccd263 bruno0907 <bruno0907@gmail.com> 1622555289 -0300	commit: initial commit
+c6dad10c4cc398fda60cc41e6451452752ccd263 5b5816ee76c9748df0d4a268d6271ff6695a659f bruno0907 <bruno0907@gmail.com> 1622555413 -0300	commit: chore: readme cleanup
+5b5816ee76c9748df0d4a268d6271ff6695a659f 6c3813f7aa0a29237c7f72ccf3ec1da0f472010e bruno0907 <bruno0907@gmail.com> 1622573591 -0300	commit: chore: added typscript. added chakraui. added _document file. added theme and theme provider. added signin page
+6c3813f7aa0a29237c7f72ccf3ec1da0f472010e 26573a0fbf5cd8ac89278654f503515da9e221db bruno0907 <bruno0907@gmail.com> 1622740047 -0300	commit: feat: added signin page,, custom input element, header element
+26573a0fbf5cd8ac89278654f503515da9e221db fd7c28e13dd83f6dfb84c7786d2de539e4f51a51 bruno0907 <bruno0907@gmail.com> 1622741552 -0300	commit: feat: started with dashboard page. added sidebar component
+fd7c28e13dd83f6dfb84c7786d2de539e4f51a51 5500f4b8525ecbb3e6a7a29c38772c9e0534bb7f bruno0907 <bruno0907@gmail.com> 1622743909 -0300	commit: feat: added apexcharts dependency. added mocked charts to dashboard
+5500f4b8525ecbb3e6a7a29c38772c9e0534bb7f 91f6a582c6aa1e37ceeec669d04d03433f284f89 bruno0907 <bruno0907@gmail.com> 1622748473 -0300	commit: feat: added users page
+91f6a582c6aa1e37ceeec669d04d03433f284f89 d3e8ae62b76d2d9d118bfcb4f97e72cfbb917cca bruno0907 <bruno0907@gmail.com> 1622749137 -0300	commit: feat: added pagination component
+d3e8ae62b76d2d9d118bfcb4f97e72cfbb917cca d521c0fc12e000f647b723b242f80100a2917e72 bruno0907 <bruno0907@gmail.com> 1622749665 -0300	commit: feat: added create user page
+d521c0fc12e000f647b723b242f80100a2917e72 ce427796175a511a9a069d7ced998a73a16a112a bruno0907 <bruno0907@gmail.com> 1622759416 -0300	commit: refactor: refactored Header, Pagination and Sidebar components.
+ce427796175a511a9a069d7ced998a73a16a112a 3b705b62f74ecebaf0716e68178586957dbae420 bruno0907 <bruno0907@gmail.com> 1622762013 -0300	commit: chore: added responsiveness to components (header, profile, sidebar). added a sidebar context to handle sidebar drawer. added sidebar context to main app.
+3b705b62f74ecebaf0716e68178586957dbae420 68fc8831ffcb1e97be3891c1e1e22e9ff1cb50ce bruno0907 <bruno0907@gmail.com> 1622766562 -0300	commit: chore: added responsiveness to dashboard and users pages
