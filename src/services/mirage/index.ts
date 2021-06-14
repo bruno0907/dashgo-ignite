@@ -40,7 +40,7 @@ const makeServer = () => {
 
         const total = schema.all('user').length
 
-        const pageStart = (Number(page) - 1 * Number(per_page))
+        const pageStart = (Number(page) - 1) * Number(per_page)
         const pageEnd = pageStart + Number(per_page)
 
         const users = this.serialize(schema.all('user')).users.slice(pageStart, pageEnd)
@@ -50,7 +50,7 @@ const makeServer = () => {
           { 'x-total-count': String(total) },
           { users }
         )
-        
+
       });
 
       this.post('/users');
