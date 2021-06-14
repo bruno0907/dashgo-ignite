@@ -9,14 +9,22 @@ type User = {
   createdAt: string;
 };
 
-interface Users {
+interface GetUsersResponseProps {
   users: User[];
+  totalCount: number;
 }
 
-const getUsers = async (): Promise<User[]> => {
-  const { data } = await api.get<Users>('/users');
+
+const getUsers = async (page: number): Promise<GetUsersResponseProps> => {
+  const { data, headers } = await api.get('/users', {
+    params: {
+      page,
+    }
+  });
   
-  const users = data.users.map(user => {
+  const totalCount = Number(headers['x-total-count'])  
+  
+  const users = data.users.map((user: User) => {
     return {
       ...user,      
       createdAt: new Date(user.createdAt).toLocaleString('pt-BR', {
@@ -27,12 +35,15 @@ const getUsers = async (): Promise<User[]> => {
     }
   })
 
-  return users
+  return {
+    totalCount,
+    users
+  }
 }
 
-const useUsers = () => {
-  return useQuery('users', getUsers, {
-    staleTime: 1000 * 5, // 5 seconds
+const useUsers = (page: number) => {
+  return useQuery(['users', { page }], () => getUsers(page), {
+    staleTime: 1000 * 60 * 10, // 10minutes
   })
 };
 

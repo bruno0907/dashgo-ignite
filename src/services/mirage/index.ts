@@ -33,6 +33,7 @@ const makeServer = () => {
     
     routes() {
       this.namespace = 'api';
+
       this.timing = 750;
 
       this.get('/users', function(schema, request) {
@@ -53,9 +54,12 @@ const makeServer = () => {
 
       });
 
+      this.get('/users/:id');
+
       this.post('/users');
 
       this.namespace = '';
+      
       this.passthrough();
     }
   })
