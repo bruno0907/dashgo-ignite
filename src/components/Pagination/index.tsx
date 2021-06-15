@@ -3,7 +3,7 @@ import { PaginationItem } from './PaginationItem';
 
 interface PaginationProps {
   totalCountOfRegisters: number;
-  registersPerPeage?: number;
+  registersPerPage?: number;
   currentPage?: number;
   onPageChange: (page: number) => void;
 }
@@ -20,11 +20,11 @@ function generatePagesArray(from: number, to: number) {
 
 function Pagination({
   totalCountOfRegisters,
-  registersPerPeage = 10,
+  registersPerPage = 10,
   currentPage = 1,
   onPageChange,
 }: PaginationProps) {
-  const lastPage = Math.floor(totalCountOfRegisters / registersPerPeage)
+  const lastPage = Math.round(totalCountOfRegisters / registersPerPage)  
 
   const prevPages = currentPage > 1
     ? generatePagesArray(
@@ -66,7 +66,7 @@ function Pagination({
 
         {(currentPage + siblingsCount) < lastPage && (
           <>
-            {((currentPage + 1) + siblingsCount) < (lastPage) && (
+            {(currentPage + 1 + siblingsCount) > (2 + siblingsCount) && (
               <Text color="gray.300" w="8" textAlign="center">...</Text>
             )}
             <PaginationItem onPageChange={onPageChange} number={lastPage} />

@@ -28,7 +28,7 @@ import { api } from '../../services/api';
 
 export default function UserList() {
   const [page, setPage] = useState(1)
-  const { data, isLoading, isFetching, error } = useUsers(page)
+  const { data, isLoading, isFetching, error } = useUsers(page)  
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -43,7 +43,7 @@ export default function UserList() {
     }, {
       staleTime: 1000 * 60 * 10, // 10 minutes
     })
-  }
+  }  
 
   return (
     <Box>      
@@ -96,7 +96,7 @@ export default function UserList() {
                               <Text fontSize="small" color="gray.300">{user.email}</Text>
                             </Box>
                           </Td>
-                          {isWideVersion && <Td>{user.createdAt}</Td>}
+                          {isWideVersion && <Td>{user.created_at}</Td>}
                           <Td px={["3", "6"]}> 
                             {isWideVersion 
                               ? <Button as="a" size="sm" fontSize="sm" colorScheme="purple" leftIcon={<Icon as={RiPencilLine} />}>Editar</Button>
@@ -109,7 +109,7 @@ export default function UserList() {
                   </Tbody>
                 </Table>
                 <Pagination 
-                  totalCountOfRegisters={data.totalCount}
+                  totalCountOfRegisters={data.totalCount}                  
                   currentPage={page}
                   onPageChange={setPage}
                 />
