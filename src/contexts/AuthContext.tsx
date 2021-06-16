@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext } from "react";
+import { auth } from "../services/auth";
 
 type SignInCredentials = {
   email: string;
@@ -20,10 +21,12 @@ function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = false;
 
   async function signIn({ email, password }: SignInCredentials) {
-    console.log({
+    const response = await auth.post('/sessions', {
       email,
       password
     })
+
+    console.log(response.data)
   }
 
   return (
