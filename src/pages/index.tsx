@@ -15,7 +15,7 @@ const signInFormSchema = yup.object().shape({
   password: yup.string().required('Senha obrigatória!').trim()
 });
 
-export default function Home() {
+export default function Home() {  
   const { signIn } = useAuth()
   const { 
     register, 
@@ -28,9 +28,16 @@ export default function Home() {
     resolver: yupResolver(signInFormSchema),
   });
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {    
-    await new Promise(resolve => setTimeout(resolve, 750));    
-    await signIn(values)
+  const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {  
+    try {
+      await new Promise(resolve => setTimeout(resolve, 750));    
+      await signIn(values)      
+      
+    } catch (error) {
+      console.log(error.message)
+
+    } 
+
   };
 
   return (
