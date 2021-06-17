@@ -1,6 +1,7 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 import Router from "next/router";
 import { auth } from "../services/auth";
+import { setCookie, parseCookies } from 'nookies'
 
 type SignInCredentials = {
   email: string;
@@ -18,31 +19,55 @@ type AuthProviderProps = {
 }
 
 type User = {
+  name: string;
+  avatar: string;
   email: string;
   permissions: string[];
   roles: string[];
+  token: string;
+  refreshToken: string;
 };
 
 const AuthContext = createContext({} as AuthContextData)
 
 function AuthProvider({ children }: AuthProviderProps) {  
-  const [user, setUser] = useState<User>()
+  const [user, setUser] = useState<User>(null)
   const isAuthenticated = !!user;
+
+  useEffect(() => {
+    const { 'dashgo.token': token } = parseCookies()
+    
+    if(token) {
+      auth.get('/me')
+      .then(({ data }) => setUser(data))
+      .catch(error => console.log(error))    
+    }
+
+  }, []);
 
   async function signIn({ email, password }: SignInCredentials) {
     try {
-      const { data } = await auth.post<Omit<User, 'email'>>('/sessions', {
+      const { data } = await auth.post<User>('/sessions', {
         email,
         password
+      })      
+
+      const {
+        token, 
+        refreshToken 
+      } = data
+
+      setCookie(undefined, 'dashgo.token', token, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: '/'
       })
-  
-      const { permissions, roles } = data
-  
-      setUser({
-        email,
-        permissions,
-        roles
+      setCookie(undefined, 'dashgo.refreshToken', refreshToken, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: '/'
       })
+      auth.defaults.headers['Authorization'] = `Bearer ${token}` // Default header setup on first SignIn
+  
+      setUser(data)
 
       Router.push('/dashboard')
       
